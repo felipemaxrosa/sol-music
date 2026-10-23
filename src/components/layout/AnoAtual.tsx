@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
  */
 export function AnoAtual({ fallback }: { fallback: number }) {
   const [ano, setAno] = useState(fallback);
-  useEffect(() => setAno(new Date().getFullYear()), []);
+  useEffect(() => {
+    const id = window.setTimeout(() => setAno(new Date().getFullYear()), 0);
+    return () => window.clearTimeout(id);
+  }, []);
   return <>{ano}</>;
 }

@@ -12,10 +12,11 @@ export function TeamGrid({ membros }: { membros: Membro[] }) {
   // Deep-link: /equipe?membro=slug abre o modal direto (compartilhável).
   useEffect(() => {
     const slug = new URLSearchParams(window.location.search).get("membro");
-    if (slug) {
-      const m = membros.find((x) => x.slug === slug);
-      if (m) setSelected(m);
-    }
+    if (!slug) return;
+    const m = membros.find((x) => x.slug === slug);
+    if (!m) return;
+    const id = window.setTimeout(() => setSelected(m), 0);
+    return () => window.clearTimeout(id);
   }, [membros]);
 
   const open = (m: Membro) => {

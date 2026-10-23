@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/config/site";
+import { nav } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Logo } from "@/components/layout/Logo";
@@ -23,8 +23,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fecha o menu ao trocar de rota
-  useEffect(() => setOpen(false), [pathname]);
+  // Fecha o menu ao trocar de rota (deferido p/ não setar estado direto no effect)
+  useEffect(() => {
+    const id = window.setTimeout(() => setOpen(false), 0);
+    return () => window.clearTimeout(id);
+  }, [pathname]);
 
   const isActive = (href: string) => {
     // Âncora na mesma página (ex.: "/#contato") não é "rota ativa".

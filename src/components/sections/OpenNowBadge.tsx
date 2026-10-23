@@ -10,7 +10,13 @@ export function OpenNowBadge() {
   const [open, setOpen] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setOpen(isOpenNow([...site.hours]));
+    const update = () => setOpen(isOpenNow([...site.hours]));
+    const first = window.setTimeout(update, 0);
+    const id = window.setInterval(update, 60_000);
+    return () => {
+      window.clearTimeout(first);
+      window.clearInterval(id);
+    };
   }, []);
 
   if (open === null) return null;
