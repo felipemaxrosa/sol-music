@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   Design tokens — tema escuro único, com swap C (Palco) <-> A (Pôr do Sol)
+   via [data-theme] no <html>. Trocar ACTIVE_THEME em src/config/theme.ts.
+   ========================================================================== */
+:root,
+:root[data-theme="palco"] {
+  --bg: #0e0e12;
+  --surface: #1a1a22;
+  --surface-2: #232330;
+  --fg: #f4f4f6;
+  --muted: #9a9aa6;
+  --border: #2b2b33;
+  --accent: #ffc24a; /* sol néon */
+  --accent-2: #ff8a2b; /* âmbar */
+  --accent-3: #ff8a2b;
+  --on-accent: #1a1205;
+  --ff-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --ff-body: "Instrument Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+:root[data-theme="por-do-sol"] {
+  --bg: #15122b;
+  --surface: #211a3e;
+  --surface-2: #2a2250;
+  --fg: #fff3df;
+  --muted: #c9bfe0;
+  --border: #322a55;
+  --accent: #ffb42e; /* dourado */
+  --accent-2: #ff6a3d; /* laranja pôr do sol */
+  --accent-3: #e84a7f; /* crepúsculo */
+  --on-accent: #2a1430;
+  --ff-display: "Unbounded", system-ui, sans-serif;
+  --ff-body: "DM Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+/* Mapeia os tokens para utilitários Tailwind (inline = resolve em runtime,
+   então o swap por [data-theme] funciona). */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-on-accent: var(--on-accent);
+
+  --font-sans: var(--ff-body);
+  --font-display: var(--ff-display);
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--ff-body), system-ui, -apple-system, "Segoe UI", Roboto,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--ff-display), system-ui, sans-serif;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Utilitário: brilho de refletor dourado (tema Palco). */
+.glow-accent {
+  box-shadow: 0 10px 40px -12px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* Reveal on scroll (IntersectionObserver em <Reveal/>). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
