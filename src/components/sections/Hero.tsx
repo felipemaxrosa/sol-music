@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Equalizer } from "@/components/sections/Equalizer";
 import { ButtonLink } from "@/components/ui/Button";
 import { buildWaLink } from "@/lib/whatsapp";
 import { site } from "@/config/site";
@@ -32,6 +33,16 @@ export function Hero() {
             height={560}
             className="h-auto w-[clamp(300px,30vw,480px)] opacity-[0.12]"
           />
+        </Container>
+      </div>
+
+      {/* Equalizer decorativo no canto inferior direito */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden sm:block"
+      >
+        <Container className="flex justify-end pb-8 lg:pb-12">
+          <Equalizer />
         </Container>
       </div>
 
