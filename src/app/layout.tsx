@@ -5,6 +5,7 @@ import { ACTIVE_THEME, themeColor } from "@/config/theme";
 import { site } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StructuredData } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
+        <StructuredData />
 
         <Header />
         <main className="flex-1">{children}</main>
