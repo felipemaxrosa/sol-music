@@ -18,18 +18,20 @@ export function Hero() {
         }}
       />
 
-      {/* Logo como marca d'água no lado direito (só desktop, não atrapalha o texto) */}
+      {/* Logo como marca d'água, alinhada à direita do conteúdo (mesmo container do header) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block xl:right-[3%]"
+        className="pointer-events-none absolute inset-0 hidden items-center lg:flex"
       >
-        <Image
-          src="/logo.png"
-          alt=""
-          width={560}
-          height={560}
-          className="h-auto w-[clamp(340px,34vw,560px)] opacity-[0.12]"
-        />
+        <Container className="flex justify-end">
+          <Image
+            src="/logo.png"
+            alt=""
+            width={560}
+            height={560}
+            className="h-auto w-[clamp(300px,30vw,480px)] opacity-[0.12]"
+          />
+        </Container>
       </div>
 
       <Container className="relative flex flex-col gap-6 pb-16 pt-14 sm:pt-20 lg:pb-28">
