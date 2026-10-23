@@ -20,12 +20,11 @@ export function Logo({
       className={cn("inline-flex items-center", className)}
     >
       <Image
-        src="/logo.jpg"
+        src="/logo.png"
         alt="SolMusic Instrumentos Musicais"
         width={width}
         height={height}
         priority={priority}
-        className="rounded-xl"
       />
     </Link>
   );
