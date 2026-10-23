@@ -3,10 +3,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { DestaqueCard } from "@/components/destaques/DestaqueCard";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { mockDestaques } from "@/lib/sanity/mock";
+import { getDestaques } from "@/lib/sanity/data";
 
-export function DestaquesPreview() {
-  const items = mockDestaques.slice(0, 3);
+export async function DestaquesPreview() {
+  const items = (await getDestaques()).slice(0, 3);
 
   return (
     <Section

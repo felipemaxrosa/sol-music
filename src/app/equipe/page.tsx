@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/ui/Section";
 import { TeamGrid } from "@/components/equipe/TeamGrid";
-import { mockEquipe } from "@/lib/sanity/mock";
+import { getEquipe } from "@/lib/sanity/data";
 
 export const metadata: Metadata = {
   title: "Equipe",
@@ -10,14 +10,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/equipe" },
 };
 
-export default function EquipePage() {
+export default async function EquipePage() {
+  const membros = await getEquipe();
   return (
     <Section
       eyebrow="Gente da casa"
       title="A equipe SolMusic"
       description="Toque no card para ver o perfil de cada um e falar direto no WhatsApp."
     >
-      <TeamGrid membros={mockEquipe} />
+      <TeamGrid membros={membros} />
     </Section>
   );
 }

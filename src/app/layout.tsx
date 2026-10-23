@@ -5,7 +5,6 @@ import { ACTIVE_THEME, themeColor } from "@/config/theme";
 import { site } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -66,7 +65,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppFloat />
       </body>
     </html>
   );
