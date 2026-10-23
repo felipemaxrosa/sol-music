@@ -24,34 +24,30 @@ export const site = {
   region: "SP",
 
   whatsapp: {
-    // TODO: número real (formato wa.me: DDI+DDD+número, só dígitos)
-    phone: "5512990000000",
+    // Número da loja (formato wa.me: DDI+DDD+número, só dígitos).
+    // ⚠️ É um fixo — confirmar se tem WhatsApp Business ativo (ver TODO abaixo).
+    phone: "551238836049",
     defaultMessage:
       "Olá! Vim pelo site da SolMusic e gostaria de mais informações. 🎸",
   },
-  // TODO: telefone de exibição real
-  phoneDisplay: "(12) 99000-0000",
+  phoneDisplay: "(12) 3883-6049",
 
   address: {
-    // TODO: endereço real
-    street: "Rua Example, 000 — Centro",
+    street: "R. Altino Arantes, 753 — Centro",
     city: "Caraguatatuba",
     region: "SP",
-    postalCode: "11660-000",
+    postalCode: "11660-020",
     country: "BR",
   },
-  // TODO: coordenadas reais (aprox. centro de Caraguatatuba)
-  geo: { lat: -23.6206, lng: -45.4132 },
-  // TODO: link real do Google Maps
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=SolMusic+Caraguatatuba",
+  geo: { lat: -23.6203866, lng: -45.4071395 },
+  mapsUrl: "https://maps.app.goo.gl/MqwwhRNhwTcBhMJX9",
 
   instagram: {
-    // TODO: @ real
-    handle: "solmusic",
-    url: "https://instagram.com/solmusic",
+    handle: "lojasolmusic",
+    url: "https://www.instagram.com/lojasolmusic/",
   },
 
-  /** Horários por dia da semana (índice = Date.getDay). */
+  /** Horários por dia da semana (índice = Date.getDay). TODO: confirmar com a loja. */
   hours: [
     { label: "Domingo", open: null, close: null },
     { label: "Segunda", open: "09:00", close: "18:00" },
