@@ -151,21 +151,11 @@ export default function ContatoPage() {
 
       {/* Mapa (Google Maps embutido) */}
       <Reveal delay={150}>
-        <div className="mt-6 flex flex-col gap-3">
-          <GoogleMap
-            query={`${site.geo.lat},${site.geo.lng}`}
-            title={`Mapa da ${site.name} em ${site.city}/${site.region}`}
-            className="h-[380px]"
-          />
-          <ButtonLink
-            href={site.mapsUrl}
-            variant="outline"
-            className="self-start"
-          >
-            Abrir no Google Maps
-            <ArrowUpRightIcon width={18} height={18} />
-          </ButtonLink>
-        </div>
+        <GoogleMap
+          query={`${site.geo.lat},${site.geo.lng}`}
+          title={`Mapa da ${site.name} em ${site.city}/${site.region}`}
+          className="mt-6 h-[380px]"
+        />
       </Reveal>
     </Section>
   );
