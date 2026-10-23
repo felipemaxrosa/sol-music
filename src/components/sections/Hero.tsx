@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { buildWaLink } from "@/lib/whatsapp";
 import { site } from "@/config/site";
@@ -35,44 +36,54 @@ export function Hero() {
       </div>
 
       <Container className="relative flex flex-col gap-6 pb-16 pt-14 sm:pt-20 lg:pb-28">
-        <p className="inline-flex self-start items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-2">
-          Ao vivo em {site.city}/{site.region}
-        </p>
+        <Reveal>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-2">
+            Ao vivo em {site.city}/{site.region}
+          </p>
+        </Reveal>
 
-        <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.02] sm:text-6xl lg:text-7xl">
-          O palco é seu.
-          <br />O{" "}
-          <span
-            className="text-accent"
-            style={{
-              textShadow:
-                "0 0 32px color-mix(in oklab, var(--accent) 45%, transparent)",
-            }}
-          >
-            som
-          </span>{" "}
-          é nosso.
-        </h1>
+        <Reveal delay={90}>
+          <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.02] sm:text-6xl lg:text-7xl">
+            O palco é seu.
+            <br />O{" "}
+            <span
+              className="text-accent"
+              style={{
+                textShadow:
+                  "0 0 32px color-mix(in oklab, var(--accent) 45%, transparent)",
+              }}
+            >
+              som
+            </span>{" "}
+            é nosso.
+          </h1>
+        </Reveal>
 
-        <p className="max-w-xl text-base text-muted sm:text-lg">
-          Da primeira palhetada ao show lotado — instrumentos, acessórios e o
-          atendimento de quem toca, pertinho de casa no Litoral Norte.
-        </p>
+        <Reveal delay={180}>
+          <p className="max-w-xl text-base text-muted sm:text-lg">
+            Da primeira palhetada ao show lotado — instrumentos, acessórios e o
+            atendimento de quem toca, pertinho de casa no Litoral Norte.
+          </p>
+        </Reveal>
 
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          <ButtonLink href="/destaques" size="lg">
-            Ver destaques
-            <ArrowRightIcon width={18} height={18} />
-          </ButtonLink>
-          <ButtonLink href={buildWaLink()} variant="outline" size="lg">
-            <WhatsAppIcon width={18} height={18} />
-            Falar no WhatsApp
-          </ButtonLink>
-        </div>
+        <Reveal delay={260}>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <ButtonLink href="/destaques" size="lg">
+              Ver destaques
+              <ArrowRightIcon width={18} height={18} />
+            </ButtonLink>
+            <ButtonLink href={buildWaLink()} variant="outline" size="lg">
+              <WhatsAppIcon width={18} height={18} />
+              Falar no WhatsApp
+            </ButtonLink>
+          </div>
+        </Reveal>
 
-        <p className="pt-4 text-sm text-muted">
-          Caraguatatuba · Ilhabela · São Sebastião · Ubatuba
-        </p>
+        <Reveal delay={340}>
+          <p className="pt-4 text-sm text-muted">
+            Caraguatatuba · Ilhabela · São Sebastião · Ubatuba
+          </p>
+        </Reveal>
       </Container>
     </section>
   );
