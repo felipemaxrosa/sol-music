@@ -26,8 +26,11 @@ export function Header() {
   // Fecha o menu ao trocar de rota
   useEffect(() => setOpen(false), [pathname]);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href.split("#")[0]);
+  const isActive = (href: string) => {
+    // Âncora na mesma página (ex.: "/#contato") não é "rota ativa".
+    if (href.includes("#")) return false;
+    return href === "/" ? pathname === "/" : pathname.startsWith(href);
+  };
 
   return (
     <header
