@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { buildWaLink } from "@/lib/whatsapp";
@@ -16,6 +17,20 @@ export function Hero() {
             "radial-gradient(60% 70% at 50% -8%, color-mix(in oklab, var(--accent) 26%, transparent), transparent 62%)",
         }}
       />
+
+      {/* Logo como marca d'água no lado direito (só desktop, não atrapalha o texto) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block xl:right-[3%]"
+      >
+        <Image
+          src="/logo.png"
+          alt=""
+          width={560}
+          height={560}
+          className="h-auto w-[clamp(340px,34vw,560px)] opacity-[0.12]"
+        />
+      </div>
 
       <Container className="relative flex flex-col gap-6 pb-16 pt-14 sm:pt-20 lg:pb-28">
         <p className="inline-flex self-start items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-2">
