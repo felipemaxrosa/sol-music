@@ -42,7 +42,7 @@ export function Header() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Logo />
+        <Logo width={40} height={40} priority />
 
         <nav aria-label="Principal" className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (

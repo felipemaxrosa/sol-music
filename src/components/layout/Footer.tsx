@@ -25,7 +25,7 @@ export function Footer() {
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Marca */}
         <div className="flex flex-col gap-4">
-          <Logo />
+          <Logo width={84} height={84} />
           <p className="max-w-xs text-sm text-muted">
             Instrumentos, acessórios e o atendimento de quem toca — para os
             músicos de todo o Litoral Norte.

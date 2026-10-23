@@ -1,28 +1,32 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  className,
+  width = 40,
+  height = 40,
+  priority = false,
+}: {
+  className?: string;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+}) {
   return (
     <Link
       href="/"
       aria-label="SolMusic — início"
-      className={cn(
-        "inline-flex items-center gap-2 font-display text-lg font-extrabold tracking-tight",
-        className,
-      )}
+      className={cn("inline-flex items-center", className)}
     >
-      <span
-        aria-hidden
-        className="size-3 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 35%, var(--accent), var(--accent-2))",
-          boxShadow: "0 0 12px var(--accent)",
-        }}
+      <Image
+        src="/logo.jpg"
+        alt="SolMusic Instrumentos Musicais"
+        width={width}
+        height={height}
+        priority={priority}
+        className="rounded-xl"
       />
-      <span>
-        Sol<span className="text-accent">Music</span>
-      </span>
     </Link>
   );
 }
