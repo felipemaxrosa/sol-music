@@ -4,11 +4,10 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 /**
- * Revela o conteúdo ao entrar na viewport (fade + slide up).
- * Robusto: se o elemento já está visível no mount (acima da dobra) revela na
- * hora; abaixo da dobra usa IntersectionObserver; e um fallback por timeout
- * garante que nada fique escondido se o IO falhar. Sem JS/IO → visível
- * (ver globals.css + <noscript>).
+ * Revela o conteúdo ao entrar na viewport (fade + subida), ao rolar a tela.
+ * Quem já está na tela no load é revelado logo (o observer dispara pra quem
+ * já intersecta). Sem JS → visível (ver globals.css + <noscript>); com
+ * prefers-reduced-motion a animação é desligada.
  */
 export function Reveal({
   children,
@@ -26,18 +25,6 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-
-    // Já visível no carregamento → revela imediatamente.
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
-      setShown(true);
-      return;
-    }
-
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -45,17 +32,11 @@ export function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
 
-    // Rede de segurança: nunca deixa nada permanentemente escondido.
-    const t = window.setTimeout(() => setShown(true), 1400);
-
-    return () => {
-      io.disconnect();
-      window.clearTimeout(t);
-    };
+    return () => io.disconnect();
   }, []);
 
   return (
