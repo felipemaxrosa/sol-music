@@ -107,34 +107,6 @@
   box-shadow: 0 10px 40px -12px color-mix(in oklab, var(--accent) 60%, transparent);
 }
 
-/* Equalizador decorativo (barras douradas) */
-.eq {
-  display: flex;
-  align-items: flex-end;
-  gap: 5px;
-  height: 52px;
-}
-.eq > span {
-  width: 6px;
-  height: 30%;
-  border-radius: 3px 3px 0 0;
-  background: linear-gradient(to top, var(--accent-2), var(--accent));
-}
-@media (prefers-reduced-motion: no-preference) {
-  .eq > span {
-    animation: eq 1.1s ease-in-out infinite;
-  }
-}
-@keyframes eq {
-  0%,
-  100% {
-    height: 24%;
-  }
-  50% {
-    height: 92%;
-  }
-}
-
 /* Reveal on scroll (IntersectionObserver em <Reveal/>). */
 .reveal {
   opacity: 0;
