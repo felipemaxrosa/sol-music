@@ -3,7 +3,6 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { GoogleMap } from "@/components/ui/GoogleMap";
-import { OpenNowBadge } from "@/components/sections/OpenNowBadge";
 import { site } from "@/config/site";
 import { formatHoursGroups } from "@/lib/hours";
 import { buildWaLink } from "@/lib/whatsapp";
@@ -109,12 +108,9 @@ export default function ContatoPage() {
         {/* Endereço + horário */}
         <Reveal delay={100}>
           <div className="flex h-full flex-col gap-5 rounded-2xl border border-border bg-surface p-6 sm:p-8">
-            <div className="flex items-center justify-between gap-3">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                A loja
-              </h2>
-              <OpenNowBadge />
-            </div>
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+              A loja
+            </h2>
 
             <div className="flex items-start gap-3">
               <MapPinIcon
@@ -149,14 +145,12 @@ export default function ContatoPage() {
         </Reveal>
       </div>
 
-      {/* Mapa (Google Maps embutido) */}
-      <Reveal delay={150}>
-        <GoogleMap
-          query={`${site.geo.lat},${site.geo.lng}`}
-          title={`Mapa da ${site.name} em ${site.city}/${site.region}`}
-          className="mt-6 h-[380px]"
-        />
-      </Reveal>
+      {/* Mapa (Google Maps embutido) — sem reveal pra o iframe não "piscar" */}
+      <GoogleMap
+        query={`${site.geo.lat},${site.geo.lng}`}
+        title={`Mapa da ${site.name} em ${site.city}/${site.region}`}
+        className="mt-6 h-[380px]"
+      />
     </Section>
   );
 }
