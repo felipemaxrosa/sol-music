@@ -17,8 +17,8 @@ export const site = {
   legalName: "Solmusic Instrumentos Musicais",
   description:
     "Loja de instrumentos musicais em Caraguatatuba, no Litoral Norte de SP. Instrumentos, acessórios e o atendimento de quem toca — para músicos de Caraguatatuba, Ilhabela, São Sebastião e Ubatuba.",
-  // TODO: domínio definitivo no deploy
-  url: "https://solmusic.com.br",
+  // Em produção vem de NEXT_PUBLIC_SITE_URL (setar na Vercel com o domínio final).
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://solmusic.com.br",
   locale: "pt-BR",
   city: "Caraguatatuba",
   region: "SP",
