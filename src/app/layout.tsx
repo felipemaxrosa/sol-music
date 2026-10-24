@@ -3,8 +3,7 @@ import "./globals.css";
 import { activeFontHref } from "@/lib/fonts";
 import { ACTIVE_THEME, themeColor } from "@/config/theme";
 import { site } from "@/config/site";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
@@ -64,9 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         <StructuredData />
 
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

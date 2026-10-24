@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // artefatos gerados do Sanity (studio runtime/build)
+    ".sanity/**",
+    "dist/**",
+    "dist-studio/**",
   ]),
 ]);
 
